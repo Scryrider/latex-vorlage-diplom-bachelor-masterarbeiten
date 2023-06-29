@@ -7,6 +7,7 @@
 % Variablen
 \input{latex_einstellungen/variablen}
 
+
 % weitere Pakete
 % Grafiken aus PNG Dateien einbinden
 \usepackage{graphicx}
@@ -79,6 +80,8 @@
 % Schaltet den zusätzlichen Zwischenraum ab, den LaTeX normalerweise nach einem Satzzeichen einfügt.
 %\frenchspacing
 
+\usepackage{xspace} % sorgt dafür, dass Leerzeichen hinter parameterlosen Makros nicht als Makroendezeichen interpretiert werden
+
 % Paket für Zeilenabstand
 \usepackage{setspace}
 
@@ -147,6 +150,9 @@
 \begin{document}
 % hier werden die Trennvorschläge inkludiert
 \input{latex_einstellungen/trennung}
+
+%Befehle
+\input{latex_einstellungen/Befehle}
 
 % Schriftart Helvetica verwenden
 %\usepackage{helvet}
@@ -267,24 +273,7 @@
 %\newpage
 
 % einzelne Kapitel werden hier eingebunden
-\input{1_einleitung}
-\newpage
-
-\input{2_kap1}
-\newpage
-
-\input{3_kap2}
-\newpage
-
-% hier können weitere Kapitel angelegt und eingetragen werden
-% ....
-
-\input{7_ausblick}
-\newpage
-
-\input{8_fazit}
-
-\input{beispiel}
+\input{Inhalt}
 
 % einfacher Zeilenabstand
 \singlespacing
