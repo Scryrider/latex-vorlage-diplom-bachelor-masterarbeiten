@@ -46,14 +46,25 @@ Für die Entwicklung der Software sethen dem Entwickler ein voll ausgestatteter 
 
 \subsection{Umsetzungsvarianten}
 \label{sec:Umsetzungsvarianten}
-Nach der Analyse der Anforderungen und der Markterkundung sollen in diesem Abschnitt verschiedene Umsetzungsvarianten diskutiert werden. Es gibt verschiedene Softwareentwicklungsansätze, die für dieses Projekt gewählt werden können.
+Nach eingehender Analyse der Anforderungen und einer umfassenden Markterkundung wurden verschiedene Umsetzungsvarianten für das geplante Softwareprojekt des Anwesenheitsplaners untersucht. Dabei wurden insbesondere zwei Architekturansätze betrachtet: die monolithische Anwendung und die Client-Server-Architektur. Der Begriff der Architektur in der Softwareentwicklung ist dabei nur schwer zu definieren. In den folgenden Absätzen betrachte ich deswegen eine gemischte Form der System- und Software Architektur.
 
-Die simpelste Variante ist die Entwicklung einer monolithischen Anwendung, die als Programm auf den Clients installiert wird. Hierbei stellt das Programm alle nötigen Komponenten und Dienste im ganzen bereit. Dieser Ansatz kann gut geeignet sein, wenn die so entwickelte Anwendung auf einer bestimmten Plattform ausgeführt werden soll und keine Notwendigkeit für eine verteilte Architektur besteht. Da das Programm bei einer monolithischen Architektur sowohl das User-Interface als auch die Logik beinhaltet wird kein extra Server dafür benötigt.
+\subsubsection{monolithische Architektur}
+\label{sec:monolithisch}
+%TODO:was ist monolitisch
+Die monolithische Architektur würde eine eigenständige Anwendung bedeuten, die auf den Client PCs installiert wird. Bei diesem Ansatz ist das Programm in der Lage, alle erforderlichen Komponenten und Dienste bereitzustellen. Dieser Ansatz ist vor allem dann geeignet, wenn die Anwendung auf einer spezifischen Plattform ausgeführt werden soll und keine Notwendigkeit für eine verteilte Architektur besteht. Da die monolithische Architektur sowohl das User-Interface als auch die Logik beinhaltet, entfällt der zusätzliche Bedarf an einem dedizierten Server für die Logik. Nachteil hierbei ist die eingeschränkte Flexibilität, da ein solches Programm an das System gebunden ist für das es Entwickelt wurde.
 
-Für den Anwesenheitsplaner könnte auch auf die Client-Server-Architektur gesetzt werden, die klassisch bei Webbasierten Anwendung mit Backend-Server und einer Datenbank eingesetzt wird. Bei dieser Art von Anwendung werden die Funktionen auf mehrere Schichten aufgeteilt. Der Backend-Server kümmert sich um die Verarbeitung der Anfragen und die Bereitstellung von Daten, während die Datenbank die persistenten Speicherung der Informationen ermöglicht. Das bedeutet zwar mehr Integrationsaufwand, würde aber eine gute Flexibilität bieten und wäre durch den Einsatz von Webtechnologienenn Zukunftssicher da die Anwendung Plattformunabhängig eingesetzt werden kann. Die potenziellen Nachteile wie die ständige Netzwerkabhängigkeit der Clients um den Dienst zu Nutzen, können im Anwendungskontext vernachlässigt werden.
+\subsubsection{Client-Server-Architektur}
+\label{sec:ClientServer}
+%TODO:Was ist Clien-Server
+Die zweite betrachtete Option war die Client-Server-Architektur, die bei webbasierten Anwendungen mit einem Backend-Server und einer Datenbank zum Einsatz kommt. Bei dieser Architektur werden die Funktionen auf mehrere Schichten aufgeteilt. Der Backend-Server ist für die Verarbeitung der Anfragen und die Bereitstellung von Daten zuständig, während die Datenbank die persistente Speicherung der Daten ermöglicht. Der Benutzer interagiert mit dem System über das Frontend, das auf dem Client läuft. Um zu Kommunizieren sendet der Client Anfragen an den Server und erwartet entsprechende Antworten. Die Kommunikation zwischen Client und Server erfolgt dann über ein Netzwerkprotokoll wie HTTP. Ein Nachteil ist dabei die ständige Netzwerkabhängigkeit der Clients um den Dienst Nutzen zu können.
 
-Auf grundlage der Anforderungen solle auf eine Client-Server-Architektur mit Frontend und Backend gesetzt werden. Der etwas höhere Integrationsaufwand dieser Architektur wird durch die dabei entstehend Vorteile ausgeglichen. Die Integration einer monolithischen Architektur würde im konkreten Fall ebenfalls einen höheren Aufwand ergeben als vorgesehen, da für mehrere Plattformen entwickelt werden müsste. Desweiteren sind im SMK bereits viele der für eine Client-Server-Architektur geforderten Systeme vorhanden, da es eine oft eingesetzte Architektur ist. Somit können diese Ressourcen genutzt werden.
+\subsubsection{Vergleich}
+\label{sec:Vergleich}
+Beide %TODO: der shit muss in ordnung gebracht werden!
 
+Nach sorgfältiger Abwägung der Vor- und Nachteile beider Ansätze wurde beschlossen, auf eine Client-Server-Architektur mit Frontend und Backend zu setzen, und eine Webentwicklung anzustreben. Die Verwendung von Webtechnologien bringt den Vorteil der plattformunabhängigen Verfügbarkeit der Anwendung. Benutzer können von verschiedenen Geräten aus, die einen Webbrowser unterstützen, auf den Anwesenheitsplaner zugreifen. Darüber hinaus erleichtert die Verwendung von HTTP die Kommunikation zwischen Client und Server.
+
+Insgesamt bietet die gewählte Client-Server-Architektur mit Frontend und Backend die besten Voraussetzungen für die Umsetzung des Anwesenheitsplaners. Durch die Webentwicklung wird eine flexible, plattformunabhängige Anwendung geschaffen, die sowohl die Benutzeranforderungen erfüllt als auch die Möglichkeit bietet, zukünftige Erweiterungen und Skalierungen problemlos umzusetzen.
 
 
 \subsection{Programm und Datenentwurf}
