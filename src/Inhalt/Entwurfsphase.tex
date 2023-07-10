@@ -1,8 +1,9 @@
-\section{Entwurfsphase}
-\label{sec:Entwurfsphase}
+\section{Variantendiskussion}
+\label{sec:Variantendiskussion}
 In der Entwurfsphase sollen aus den Anforderungen der Analysephase Modelle der zu entwickelten Software entstehen, die die konkreten Hardware- und Softwarebezogenen Anforderungen berücksichtigen. Diese Modelle gelten dann als unmittelbare Vorlage für die sich anschließende Implementationsphase. (vgl. \cite[S. 69]{dumke-2003})
 
-Zu Beginn soll eine Marktrecherche durchgeführt werden, um bestehende Lösungen zu analysieren und auf Eignung zu Prüfen. Mit den gewonnen Erkenntnissen soll dann abgewägt werden ob Standartsoftware beschafft wird oder eine eigenentwicklung Veranlasst wird. Das erfolgt im Rahmen einer Variantendiskussion, in der verschiedene Ansätze und Technologien zur Umsetzung der Software bewertet werden.
+Zu Beginn soll eine Marktrecherche durchgeführt werden, um bestehende Lösungen zu analysieren und auf Eignung zu Prüfen. Mit den gewonnen Erkenntnissen soll dann abgewägt werden ob Standartsoftware beschafft werden kann oder eine eigenentwicklung Veranlasst wird.
+%Das erfolgt im Rahmen einer Variantendiskussion, in der verschiedene Ansätze und Technologien zur Umsetzung der Software bewertet werden.
 
 Letztendlich soll der Programm- und Datenentwurf mithilfe geeigneter Modelle erarbeitet werden. Dies umfasst die Festlegung der Softwarearchitektur, der Datenstruktur sowie etwaiger Schnittstellen und der grafische Oberfläche.
 
@@ -10,12 +11,14 @@ Letztendlich soll der Programm- und Datenentwurf mithilfe geeigneter Modelle era
 \label{sec:Marktrecherche}
 Im Rahmen der Marktanalyse wurden drei verschiedene Softwarelösungen für die Anwesenheitsplanung verglichen. Das Ziel dieser Analyse war es, Akquisitionsoptionen für das geplante Softwareprojekt zu ermitteln. Um Entscheidungen über die Eignung treffen zu können, wurden die Softwareprodukte auf den Erfüllungsgrad der Anforderungen geprüft. Dafür wurde eine Bewertungsmatrix erstellt, die funktionale- als auch nichtfunktionale Anforderungen beinhaltete. Dabei wurden die Kriterien so gewählt und gewichtet das zwingend erforderliche Anforderungen höher gewichtet wurden als optionale Anforderungen.
 
+%TODO:Tabelle muss ordentlich Platziert werden
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.9\textwidth,angle=0]{abb/Markterkundung.pdf}
     \caption[Beschreibung]{ Tabelle Markterkundung}
     \label{tab:Markterkundung}
 \end{figure}
+
 \subsubsection{An-/Abwesenheitsplaner von Thomas Jäger}
 \label{sec:AnAbwesenheitsplaner}
 Die erste betrachtete Software, der An-/Abwesenheitsplaner von Thomas Jäger, zeichnete sich durch die besonders intuitive Benutzeroberfläche aus. Bei der Betrachtung der anderen funktionalen Kriterien wurde festgestellt, dass die Software alle benötigten Anforderungen erfüllt und damit für den Einsatz geeignet ist. Negativ zu bewerten ist allerding, das die Software nur als Windows Programm zur Verfügung steht und damit nicht Plattformunabhängig eingesetzt werden kann. Zudem müsste ein solches Programm auf jedem Client PC im SMK installiert werden um die Software für alle Nutzbar zu machen. Damit ergibt sich ein hoher initialer Integrationsaufwand und auch späterer Wartungsaufwand den es zu berücksichtigen gilt. (vgl. \cite{AnAbwesenPlaner})
@@ -36,44 +39,22 @@ Nach Betrachtung der drei Programme wurde festgestellt, dass keines der drei fü
 
 \subsection{Eigenentwicklung}
 \label{sec:Eigenentwicklung}
-Referat 12 wurde mit der Entwicklung der Softwarelösung beauftragt. Für die Umsetzung des Projektes werden benötigte Hard- und Softwareressourcen vom SMK bereitgestellt. Um den zeitlichen Rahmen für das Projekt abzugrenzen wurde für das gesamte Projekt 32 Manntage angesetzt. Die genaue Aufschlüsselung des Projektablaufes siehe \ref{abb:Gantt}.
+Für die Umsetzung wurde Referat 12 mit der Entwicklung der Softwarelösung beauftragt. Die benötigten Hard- und Softwareressourcen vom SMK bereitgestellt und der zeitliche Rahmen für das Projekt wurde mit 32 Arbeitstagen angesetzt. Die genaue Aufschlüsselung des Projektablaufes siehe \ref{abb:Gantt}.
 
 Für die Entwicklung der Software sethen dem Entwickler ein voll ausgestatteter Arbeitsplatz, sowie mehrere virtuelle Maschinen im Rechenzentrum zur Verfügung. Damit hat der Entwickler freie Hand bei der Umsetzung. Zu beachten ist jedoch, dass nach Möglichkeit auf die bestehende Infrastruktur zurückgegriffen bzw. berücksichtigt wird.
 
 
-\subsection{Variantendiskussion}
-\label{sec:Marktrecherche}
-Nach der Analyse der Anforderungen und einer Markterkundung sollen in diesem Abschnitt verschiedene Varianten für die Umsetzung der Entwicklung diskutiert werden, um eine fundierte Entscheidung zu treffen. Dabei sollen verschiedene Möglichkeiten für die Systemarchitektur im Backend, sowie Frontendlösungen vorgestellt und verglichen werden.
+\subsection{Umsetzungsvarianten}
+\label{sec:Umsetzungsvarianten}
+Nach der Analyse der Anforderungen und der Markterkundung sollen in diesem Abschnitt verschiedene Umsetzungsvarianten diskutiert werden. Es gibt verschiedene Softwareentwicklungsansätze, die für dieses Projekt gewählt werden können.
 
-\subsubsection{Systemarchitektur}
-\label{sec:Systemarchitektur}
-Für die Auswahl der Backendarchitektur soll auf eine Client-Server-Architektur gesetzt werden. Insgesamt bietet die Client-Server-Architektur eine klare Trennung zwischen Benutzeroberfläche und Geschäftslogik, was die Entwicklung und Wartung der Anwendung erleichtert. Die potenziellen Nachteile wie die ständige Netzwerkabhängigkeit können im Anwendungskontext der Anwendung vernachlässigt werden. 
+Die simpelste Variante ist die Entwicklung einer monolithischen Anwendung, die als Programm auf den Clients installiert wird. Hierbei stellt das Programm alle nötigen Komponenten und Dienste im ganzen bereit. Dieser Ansatz kann gut geeignet sein, wenn die so entwickelte Anwendung auf einer bestimmten Plattform ausgeführt werden soll und keine Notwendigkeit für eine verteilte Architektur besteht. Da das Programm bei einer monolithischen Architektur sowohl das User-Interface als auch die Logik beinhaltet wird kein extra Server dafür benötigt.
 
-\subsubsection{Monolithische Architektur}
-\label{sec:Monolithische Architektur} 
-Die monolithische Architektur ist eine traditionelle Herangehensweise, bei der das Backend als eine einzige Anwendung entwickelt wird. Diese Variante bietet den Vorteil einer einfachen Implementierung und Wartung. Da das Backend als Ganzes betrachtet wird, können Änderungen ohne Schnittstellenprobleme vorgenommen werden. Allerdings kann dies zu einer erhöhten Komplexität führen und die Skalierbarkeit beeinträchtigen.
+Für den Anwesenheitsplaner könnte auch auf die Client-Server-Architektur gesetzt werden, die klassisch bei Webbasierten Anwendung mit Backend-Server und einer Datenbank eingesetzt wird. Bei dieser Art von Anwendung werden die Funktionen auf mehrere Schichten aufgeteilt. Der Backend-Server kümmert sich um die Verarbeitung der Anfragen und die Bereitstellung von Daten, während die Datenbank die persistenten Speicherung der Informationen ermöglicht. Das bedeutet zwar mehr Integrationsaufwand, würde aber eine gute Flexibilität bieten und wäre durch den Einsatz von Webtechnologienenn Zukunftssicher da die Anwendung Plattformunabhängig eingesetzt werden kann. Die potenziellen Nachteile wie die ständige Netzwerkabhängigkeit der Clients um den Dienst zu Nutzen, können im Anwendungskontext vernachlässigt werden.
 
-2.2. Microservices-Architektur
-Die Microservices-Architektur basiert auf der Aufteilung des Backends in unabhängige, lose gekoppelte Services. Jeder Service ist für eine spezifische Funktion verantwortlich und kann unabhängig entwickelt, bereitgestellt und skaliert werden. Diese Variante bietet eine bessere Skalierbarkeit und erleichtert die Wartung und Erweiterung des Systems. Allerdings erfordert die Kommunikation zwischen den Services eine sorgfältige Planung und kann zu erhöhter Komplexität führen.
+Auf grundlage der Anforderungen solle auf eine Client-Server-Architektur mit Frontend und Backend gesetzt werden. Der etwas höhere Integrationsaufwand dieser Architektur wird durch die dabei entstehend Vorteile ausgeglichen. Die Integration einer monolithischen Architektur würde im konkreten Fall ebenfalls einen höheren Aufwand ergeben als vorgesehen, da für mehrere Plattformen entwickelt werden müsste. Desweiteren sind im SMK bereits viele der für eine Client-Server-Architektur geforderten Systeme vorhanden, da es eine oft eingesetzte Architektur ist. Somit können diese Ressourcen genutzt werden.
 
-2.3. Serverlose Architektur
-Die serverlose Architektur ermöglicht es, dass Backend-Logik in Funktionen ausgelagert wird, die bei Bedarf ausgeführt werden. Dies reduziert die Notwendigkeit für Serverinfrastruktur und ermöglicht eine hohe Skalierbarkeit. Zudem entfällt die Notwendigkeit für Infrastrukturwartung. Jedoch kann dies zu erhöhten Kosten und Abhängigkeiten von Drittanbietern führen.
 
-3. Frontendlösung
-3.1. Native App
-Eine native App wird plattformspezifisch entwickelt und kann auf die spezifischen Funktionen und Möglichkeiten eines Geräts zugreifen. Dies bietet eine hohe Leistung und Benutzerfreundlichkeit. Allerdings erfordert die Entwicklung und Wartung von separaten Codebasen für verschiedene Plattformen einen erhöhten Aufwand.
-
-3.2. Webanwendung
-Eine Webanwendung kann plattformunabhängig über den Webbrowser genutzt werden. Sie ermöglicht eine einfache Bereitstellung und Wartung, da nur eine Codebasis benötigt wird. Jedoch kann die Leistung im Vergleich zu nativen Apps beeinträchtigt sein, insbesondere bei ressourcenintensiven Operationen.
-
-3.3. Hybrid-App
-Eine Hybrid-App kombiniert native und webbasierte Technologien und ermöglicht die Entwicklung einer einzigen Codebasis, die auf verschiedenen Plattformen läuft. Dies bietet eine gute Balance zwischen plattformspezifischen Funktionen und Kosten- und Aufwandsersparnissen. Allerdings kann die Leistung im Vergleich zu nativen Apps geringfügig beeinträchtigt sein.
-
-4. Entscheidung
-Nach eingehender Diskussion und Abwägung der verschiedenen Varianten empfehlen wir die Microservices-Architektur als Backendlösung. Dies ermöglicht eine Skalierung der einzelnen Services und eine erleichterte Wartung und Erweiterung des Systems. Für die Frontendlösung schlagen wir eine Webanwendung vor, da sie eine plattformunabhängige Bereitstellung ermöglicht und mit modernen Webtechnologien eine gute Benutzererfahrung gewährleistet.
-
-5. Zusammenfassung
-Die Wahl der Architektur für unsere Softwareentwicklung ist von entscheidender Bedeutung. Durch die Auswahl der Microservices-Architektur als Backendlösung und einer Webanwendung als Frontendlösung können wir eine effiziente und skalierbare Lösung entwickeln, die den Anforderungen unserer Nutzer gerecht wird. Die getroffene Entscheidung sollte jedoch regelmäßig überprüft und gegebenenfalls angepasst werden, um auf sich ändernde Anforderungen und Technologien reagieren zu können.
 
 \subsection{Programm und Datenentwurf}
 \label{sec:ProgrammUDatenentwurf}
