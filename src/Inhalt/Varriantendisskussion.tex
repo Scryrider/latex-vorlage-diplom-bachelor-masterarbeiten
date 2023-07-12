@@ -1,11 +1,13 @@
 \section{Variantendiskussion}
 \label{sec:Variantendiskussion}
-Zu Beginn soll eine Marktrecherche durchgeführt werden, um bestehende Lösungen zu analysieren und auf Eignung zu Prüfen. Mit den gewonnen Erkenntnissen soll dann abgewägt werden ob Standartsoftware beschafft werden kann oder eine eigenentwicklung Veranlasst wird. Dabei sollen verschidedene Architekturansätze vorgestellt und verglichen werden. Aus dem Vergleich soll eine Entscheidung für ein vorgehen getroffen werden das dann im Entwurf und der Implementation Umgesetzt wird.
+Zu Beginn soll eine Marktrecherche durchgeführt werden, um bestehende Lösungen zu analysieren und auf Eignung zu Prüfen. Mit den gewonnen Erkenntnissen soll dann abgewägt werden ob Standartsoftware beschafft werden kann oder eine eigenentwicklung Veranlasst wird.
+
+Für die Entwicklung sollen verschidedene Architekturansätze vorgestellt und verglichen werden um so eine Entscheidung für ein vorgehen zu treffen werden das dann im Entwurf und der Implementation Umgesetzt werden kann.
 %Das erfolgt im Rahmen einer Variantendiskussion, in der verschiedene Ansätze und Technologien zur Umsetzung der Software bewertet werden.
 
 \subsection{Marktrecherche}
 \label{sec:Marktrecherche}
-Im Rahmen der Marktanalyse wurden drei verschiedene Softwarelösungen für die Anwesenheitsplanung verglichen. Das Ziel dieser Analyse war es, Akquisitionsoptionen für das geplante Softwareprojekt zu ermitteln. Um Entscheidungen über die Eignung treffen zu können, wurden die Softwareprodukte auf den Erfüllungsgrad der Anforderungen geprüft. Dafür wurde eine Bewertungsmatrix erstellt, die funktionale- als auch nichtfunktionale Anforderungen beinhaltete. Dabei wurden die Kriterien so gewählt und gewichtet das zwingend erforderliche Anforderungen höher gewichtet wurden als optionale Anforderungen.
+Im Rahmen der Marktrecherche wurden drei verschiedene Softwarelösungen für die Anwesenheitsplanung verglichen. Das Ziel dieser Analyse war es, Akquisitionsoptionen für das geplante Softwareprojekt zu ermitteln. Um Entscheidungen über die Eignung treffen zu können, wurden die Softwareprodukte auf den Erfüllungsgrad ausgewählter Anforderungen geprüft und mit einer Bewertungsmatrix bewertet, die funktionale- und nichtfunktionale Anforderungen beinhaltete. Dabei wurden die Auswahlkriterien so gewählt und gewichtet das zwingend erforderliche Anforderungen höher gewichtet wurden als optionale Anforderungen.
 
 %TODO:Tabelle muss ordentlich Platziert werden
 \begin{figure}[htb]
@@ -42,9 +44,9 @@ Für die Entwicklung der Software sethen dem Entwickler ein voll ausgestatteter 
 
 \subsection{Umsetzungsvarianten}
 \label{sec:Umsetzungsvarianten}
-Nach eingehender Analyse der Anforderungen und einer umfassenden Markterkundung wurden verschiedene Umsetzungsvarianten für das geplante Softwareprojekt des Anwesenheitsplaners untersucht. Dabei wurden insbesondere zwei Architekturansätze betrachtet: die monolithische Anwendung und die Client-Server-Architektur. Der Begriff der Architektur ist in der Softwareentwicklung dabei nur schwer genau zu definieren. In den folgenden Absätzen betrachte ich deswegen eine gemischte Form der System- und Software Architektur und beziehe mich hauptsächlich auf praktische Umsetzungsvarianten und weniger auf die theoretischen Aspekte der einzelnen Architekturen.
+Nach eingehender Analyse der Anforderungen und der Markterkundung wurden verschiedene Umsetzungsvarianten für das geplante Softwareprojekt des Anwesenheitsplaners untersucht. Dabei wurden insbesondere zwei Ansätze für die Entwicklung betrachtet: die monolithische Anwendung und eine Client-Server-Anwendung. Dabei handelt es sich um verschiedene Architekturen mit Vor- und Nachteilen. Architekturen sind in der Softwareentwicklung nicht unbedingt einheitlich Definiert weshalb in den folgenden Absätzen eine gemischte Betrachtung aus der System- und Software Architektur durchgeführt wird. Zusätzlich soll auch auf praktische Umsetzungsvarianten der einzelnen Architekturen eingegangen werden um ein praktisches Beispiel zu geben.
 
-Ebenfalls soll hier noch keine Betrachtung der Software Design Patterns angestellt werden, da diese für den Auswahlprozess der Plattform noch keine Rolle spielen. Dementsprechen wird bei der ersten bergachtung nur erwogen welchen Systemansatz man für die Umsetzung des Projektes wählen sollte.
+Es soll noch keine Betrachtung des Software Design Patterns angestellt werden, da dieses für den Auswahlprozess der Plattform noch keine Rolle spielt. Dementsprechen wird bei der bergachtung nur erwogen welchen Systemansatz man für die Umsetzung des Projektes wählen sollte.
 %Es Softwararchitektur ist vielseitig ...Webbasiert ... Systemarchitektur... Disigneentscheidungen mvvm...
 
 \subsubsection{monolithische Architektur}
@@ -61,7 +63,7 @@ Als weiterentwicklung der Client-Server-Architektur kommen auch noch die Service
 
 \subsubsection{Vergleich}
 \label{sec:Vergleich}
-Beide der Architekturansätze könnten für den Anwesenheitsplaner eingesetzt werden. Der monolithische Ansatz würde in eine Anwendung für die Windows Clients im SMK münden. Die Software könnte dann als eine Windows Forms oder WPF (Windows Presentation Foundation) Anwendung erstellt werden, was den Vorteil hätte das die Logik und die GUI direkt miteinander verbunden wären und so ein direkter Zugriff auf Benutzereingaben während der Laufzeit möglich ist. Ein weiterer Vorteil ist, dass schon viele Kenntnisse bei der Csharp und Windows Forms Entwicklung vorhanden sind.%TODO:https://learn.microsoft.com/de-de/visualstudio/get-started/csharp/tutorial-wpf?view=vs-2022#what-is-wpf , https://learn.microsoft.com/de-de/dotnet/architecture/modernize-desktop/why-modern-applications
+Beide der Architekturansätze könnten für den Anwesenheitsplaner eingesetzt werden. Der monolithische Ansatz würde in eine Anwendung für die Windows Clients im SMK münden. Die Software könnte dann als eine Windows Forms oder WPF (Windows Presentation Foundation) Anwendung erstellt werden, was den Vorteil hätte das die Logik und die GUI direkt miteinander verbunden wären und so ein direkter Zugriff auf Benutzereingaben während der Laufzeit möglich ist. Ein weiterer Vorteil ist, dass schon viele Kenntnisse bei der Csharp und Windows Forms Entwicklung vorhanden sind. (vgl. \cite{wpf}, \cite{modernApp})
 
 Eine Client-Server-Architektur in Hinsicht auf eine Browserbasierte Bereitstellung bietet sich ebenfalls an. Die Vorteile eines Webbasierten Ansatzes sind ein sehr hohes Maß an Flexibilität bei den Zielplattformen der Clients und damit eine hohe Zukunftssicherheit. Im Kontext des Projektes des Anwesenheitsplaners bedeutet das, dass der Anwesenheitsplaner auf jedem Gerät im SMK aufgerufen werden kann. Das ist ein wichtiger Faktor, da viele Bedienstete mit moblien Geräten wie Smartphones und Tablets ausgestattet sind. Webbasierte Anwendungen müssen im gegensatz zu Desktop Entwicklungen wie Windows Programmen oder Smartphone Apps nicht installiert werden, das diese von einem zentralen Server bereitgestellt werden und nur von Browser angezeigt werden.
 
@@ -69,7 +71,7 @@ Negative Punkte bei einer Client-Server-Architektur gerade bei Betrachtung von W
 
 \subsubsection{Entscheidung}
 \label{sec:Entscheidung}
-Nach sorgfältiger Abwägung der Vor- und Nachteile beider Ansätze wurde beschlossen, auf eine Client-Server-Architektur mit einer Website als Frontend und einem Webserver als Backend zu setzen um so die Plattformunabhängigkeit von Webtechnologien nutzen zu können. Insgesamt bietet die gewählte Architektur die besten Voraussetzungen für die Umsetzung des Anwesenheitsplaners. Durch eine Webentwicklung wird eine flexible, plattformunabhängige Anwendung geschaffen, die sowohl auf Desktop PCs als auch auf mobilen Geräten und Virtuellen Citrix Maschinen genutzt werden kann ohne eine installation vornehmen zu müssen.
+Nach sorgfältiger Abwägung der Vor- und Nachteile beider Ansätze wurde beschlossen, auf eine Client-Server-Architektur mit einer Website als Frontend und einem Webserver als Backend zu setzen um so die Plattformunabhängigkeit von Webtechnologien nutzen zu können. Insgesamt bietet die gewählte Architektur die besten Voraussetzungen für die Umsetzung des Anwesenheitsplaners. Durch eine Webentwicklung wird eine flexible, plattformunabhängige Anwendung geschaffen, die sowohl auf Desktop PCs als auch auf mobilen Geräten und Virtuellen Citrix Maschinen genutzt werden kann ohne neue installationen vornehmen zu müssen.
 
 
 

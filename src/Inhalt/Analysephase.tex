@@ -12,13 +12,13 @@ Die folgenden Abschnitte beschreiben die Vorgehensweise und Ergebnisse der durch
 % Schwachstellen und Herausforderungen im aktuellen Prozess
 Um eine verbesserte Variante eines Anwesenheitsplaners zu erstellen ist es notwendig die bestehenden Systeme und Abläufe zu verstehen. Dafür wurden Interviews mit Mitarbeitern aus verschiedenen Referaten geführt und analog dazu die verschiedenen Excel-Dateien analysiert. Dabei lag der Fokus auf der Analyse des Prozesses der Anwesenheitsplanung, um diesen durch die neue Variante des Anwesenheitsplaners bestmöglich zu unterstützen.
 
-Die Interviews ergaben, dass das Excel-Dokument meist in einem Netzlaufwerk aufbewahrt wird um für die Rederatsmitglieder zugänglich zu sein. Das Dokument wird nicht anders behandelt als andere Referatsdaten was bedeutet, dass es keine spezielle Rechteverwaltung gibt. Das kann zu Fehlern und Inkonsistenzen durch versehentliches ändern anderer Datensätze führen, da jeder im referat schreibrechte auf das ganze Dokument hat.
+Die Interviews ergaben, dass das Excel-Dokument meist in einem Netzlaufwerk aufbewahrt wird um für die Rederatsmitglieder zugänglich zu sein. Das Dokument wird nicht anders behandelt als andere Referatsdaten was bedeutet, dass es keine spezielle Rechteverwaltung gibt. Das kann zu Fehlern und Inkonsistenzen durch versehentliches ändern anderer Datensätze führen, da jeder im Referat schreibrechte auf das ganze Dokument hat.
 
 Als größte Problem wurde die Tatsache, dass nur ein Nutzer gleichzeitig auf das Excel-Dokument zugreifen kann festgestellt. Dies führt dazu, dass für eine unbestimmte Zeit keine Möglichkeit besteht den eigenen Status zu ändern. Meistens tritt der Umstand auf, wenn ein Mitarbeiter die Datei im Hintergrund geöffnet hat diese aber nicht nutzt.
 
 Für die Datenanalyse wurden von den beteiligten Referaten eine Kopie ihrer Excel Datei zur Verfügung gestellt. Hauptsächlich sollte der grafische Aufbau der Tabelle und die enthaltenen Informationen der Tabellen untersucht werden. Die Analyse ergab, dass alle Anwesenheitsplaner Tabellen ähnlich aufgebaut sind. Unterschiede ergaben sich meist nur in der Bezeichnung der Anwesenheitszustände und die Granularität der Zeitabschnitte. Um eine Referenz für die weitere Entwicklung zu haben wurde aus den Referats-Tabellen eine Modelltabelle für die Anwesenheitsplanung erstellt, siehe \ref{abb:Ausgangstabelle}.
 
-Basierend auf diesen Erkenntnissen wird deutlich, dass der Anwesenheitsplaner an vielen Stellen verbessert werden muss. Die neue Lösung sollte die Möglichkeit bieten, dass mehrere Nutzer gleichzeitig auf die Anwesenheitsdaten zugreifen und diese aktualisieren können. Die Automatisierung von Prozessen und die Integration einer Datenbank könnten die Genauigkeit, Effizienz und Benutzerfreundlichkeit des Anwesenheitsplaners erheblich verbessern.
+Die neue Lösung sollte die Möglichkeit bieten, dass mehrere Nutzer gleichzeitig auf die Anwesenheitsdaten zugreifen und diese aktualisieren können. Die Automatisierung von Prozessen und die Integration einer Datenbank könnten die Genauigkeit, Effizienz und Benutzerfreundlichkeit des Anwesenheitsplaners erheblich verbessern.
 
 \subsection{Anforderungen an den Anwesenheitsplaner}
 \label{sec:Soll-Zustand}
@@ -34,17 +34,17 @@ Basierend auf den in der Ist-Analyse gesammelten Erkenntnissen wird deutlich, da
 
 Aus dem Use-Case-Diagramm in Abbildung~\ref{fig:Use-Case-Diagramm} geht hervor, das ein Nutzer sich am System anmelden können soll um Anwesenheitsdaten seines Referates zu sehen und eigene Daten zu verwalten. Das Verwalten soll das erstellen, bearbeiten und löschen von Einträgen beinhalten. Desweiteren wird auch einen zweiten Nutzertyp benötigt, der als Admin fungiert und Einträge von anderen Mitarbeitern des Referates ändern kann.
 
-Aus den Intervierws konnten noch weitere Spezifikationen ermittelt werden. Am wichtigsten ist die Möglichkeit zu Mehrbenutzerzugriff. Die neue Software sollte es ermöglichen, dass mehrere Benutzer gleichzeitig auf den Anwesenheitsplaner zugreifen und ihre Daten aktualisieren können. Dadurch werden Engpässe bei der Aktualisierung der Anwesenheitsdaten vermieden und die Benutzerfreundlichkeit verbessert. Um die Benutzerfreundlichkeit noch weiter zu Verbessern soll eine ähnliche Benutzeroberfläche wie in der Excel Liste entstehen, jedoch das Eintragen der Datensätze, durch \zB Mehlfachauswahl vereinfacht.
+Aus den Intervierws konnten noch weitere Spezifikationen ermittelt werden. Am wichtigsten ist die Möglichkeit zum Mehrbenutzerzugriff. Die neue Software sollte es ermöglichen, dass mehrere Benutzer gleichzeitig auf den Anwesenheitsplaner zugreifen und ihre Daten aktualisieren können. Dadurch werden Engpässe bei der Aktualisierung der Anwesenheitsdaten vermieden und die Benutzerfreundlichkeit verbessert. Um die Benutzerfreundlichkeit noch weiter zu Verbessern soll eine ähnliche Benutzeroberfläche wie die der Excel Tabelle entstehen, die jedoch das Eintragen der Datensätze, durch \zB Mehlfachauswahl vereinfacht.
 
-Zudem sollen Datenschutz und Datensicherheit im neuen System gewährleisten werden. Dafür werden Sicherheitsmaßnahmen benötigt die vor unbefugtem Zugriff oder Verlust der Daten schützen. Dafür werden Mechanismen zur Datensicherung und Benutzer-Authentifizierung benötigt, um zu gewährleistet, dass Benutzer nur auf die Daten zugreifen und Änderungen vornehmen können, für die sie autorisiert sind.
+Zudem sollen Datenschutz und Datensicherheit im neuen System gewährleistet werden, indem Sicherheitsmaßnahmen vor unbefugtem Zugriff oder Verlust der Daten schützen. Es werden Mechanismen zur Datensicherung und Benutzer-Authentifizierung benötigt, um zu gewährleistet, dass Benutzer nur auf die Daten zugreifen und Änderungen vornehmen können, für die sie autorisiert sind.
 
-Um den geforderten Systemaufbau modellhaft zu Skizzieren wurde ein Paketdiagramm erstellt. Dieses soll für die Entwurfsphase als Referenz genutzt werden.
+Um den geforderten Systemaufbau modellhaft zu Skizzieren wurde ein Paketdiagramm, siehe Abbildung \ref{abb:Paketdiagramm} erstellt. Dieses soll für die Entwurfsphase als Referenz genutzt werden.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth,angle=0]{abb/Paketdiagramm.pdf}
     \caption[Beschreibung]{Paketdiagramm}
-    \label{fig:Paketdiagramm}
+    \label{abb:Paketdiagramm}
 \end{figure}
 
 \subsection{Datenschutz und Datensicherheitsanalyse}
