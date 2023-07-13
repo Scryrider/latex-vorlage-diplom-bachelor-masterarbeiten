@@ -31,7 +31,7 @@ Die zu speicherten Daten ergeben sich aus der in der Analysephase erhoben Tabell
 
 Für das Anlegen der Datenstrukturen im Programmcode und in der Datenbank wurde ein Entity-Relationship-Modell (ERM), siehe \ref{abb:ERM} erstellt. Hier soll es zwei Tabellen geben, die Tabelle Person wird zum Teil aus dem AD befüllt und hält zum Teil Informationen die für Funktionen des Anwesenheitsplaners benötigt werden. Die Tabelle Anwesenheit beinhaltet alle Anwesenheitseinträge der Nutzer. Dem Nutzer wird eine ein Anwesenheitseintrag über die Verbindung mit seinem Sicherheitsbezeichner (SID) im AD zugeordnet. Die SID wird benötigt da sich der Name des Nutzers ändern kann und damit nicht als Primärschlüssel eignet. Die SID wird vom AD beim erstellen des Kontos angelegt und ändert sich nie. (vgl. \cite{sid})
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth,angle=0]{abb/ERM.pdf}
     \caption[Beschreibung]{ERM}
