@@ -40,15 +40,31 @@ Zudem sollen Datenschutz und Datensicherheit im neuen System gewährleistet werd
 
 Um den geforderten Systemaufbau modellhaft zu Skizzieren wurde ein Paketdiagramm, siehe Abbildung \ref{abb:Paketdiagramm} erstellt. Dieses soll für die Entwurfsphase als Referenz genutzt werden.
 
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth,angle=0]{abb/Paketdiagramm.pdf}
     \caption[Beschreibung]{Paketdiagramm}
     \label{abb:Paketdiagramm}
 \end{figure}
 
-\subsection{Datenschutz und Datensicherheitsanalyse}
+\subsection{Datenschutz und Datensicherheitsbetrachtung}
 \label{sec:Datenschutz}
+Um das Projekt umsetzten zu können muss sichergestellt werden, das die Anforderungen an die Informationssicherheit berücksichtigt werden. Dafür wurde in Absprache mit dem Informationssicherheitsbeaufragten des SMK die Orientierung am IT-Grundschutzkompendium des BSI beschlossen. 
+
+Um das maß an zu Implementierender Datensicherheitsmaßnahmen zu ermittel wurde eine Schutzbedarfsfeststellung durchgeführt. Dabei ist zu ermitteln, welcher Schaden entstehen wenn eines der Grundziele Vertraulichkeit, Integrität oder Verfügbarkeit verletzt wird. Diese drei Grundziele werden einzeln bewertet und ergeben dann zusammengefasst den Schutzbedarf des Systems. Dafür gibt es die Schutzbedarfskategorien: normal (überschaubarer Schaden),hoch ( beträchtlicher Schaden) oder sehr hoch (katastrophaler Schaden), die dann in den BSI Umsetzungsrichteinen referenziert werden um die erforderlichen Maßnahmen festzustellen.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=0]{abb/Schutzbedarfsanalyse.pdf}
+    \caption[Beschreibung]{Schutzbedarfsanalyse}
+    \label{abb:Schutzbedarfsanalyse}
+\end{figure}
+
+Aus der Schutzbedarfsanalyse geht hervor das der Anwesenheitsplaner der Schutzbedarfskategorie normal zugeordnet werden kann. Das bedeutet das bei der Umsetzung die Basisanforderungen des BSI erfüllt werden müssen. In der Entwurfsphase werden dann die für das entstehende System passende Maßnahmen auf grundlage der BSI Anforderungen gewählt. Darunter fällt auch der Datenschutz, da die verarbeitete Daten Personen direkt zugeordnet werden können. Dementsprechend müssen auch für die gewährleistung des Datenschutzes Maßnahmen getroffen werden. 
+
+%TODO:BSI-Standards 200-2 , 
+
+
 %TODO:Personenbezogene Daten?
 %TODO:Anforderungen Datenschutzkonzept
 %TODO:Datensicherheit / Risikoanalyse
