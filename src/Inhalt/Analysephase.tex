@@ -49,7 +49,7 @@ Um den geforderten Systemaufbau modellhaft zu Skizzieren wurde ein Paketdiagramm
 
 \subsection{Datenschutz und Datensicherheitsbetrachtung}
 \label{sec:Datenschutz}
-Um das Projekt umsetzten zu können muss sichergestellt werden, das die Anforderungen an die Informationssicherheit berücksichtigt werden. Dafür wurde in Absprache mit dem Informationssicherheitsbeaufragten des SMK die Orientierung am IT-Grundschutzkompendium des BSI beschlossen. 
+Um das Projekt umsetzten zu können muss sichergestellt werden, das die Anforderungen an die Informationssicherheit berücksichtigt werden. Dafür wurde in Absprache mit dem Informationssicherheitsbeaufragten des SMK die Orientierung am IT-Grundschutzkompendium des BSI beschlossen.
 
 Um das maß an zu Implementierender Datensicherheitsmaßnahmen zu ermittel wurde eine Schutzbedarfsfeststellung durchgeführt. Dabei ist zu ermitteln, welcher Schaden entstehen kann wenn eines der Grundziele Vertraulichkeit, Integrität oder Verfügbarkeit verletzt wird. Diese drei Grundziele werden einzeln bewertet und ergeben dann zusammengefasst den Schutzbedarf des Systems. Dafür gibt es die Schutzbedarfskategorien: normal (überschaubarer Schaden),hoch (beträchtlicher Schaden) oder sehr hoch (katastrophaler Schaden), die dann für die Selektion erforderlichen Maßnahmen in den BSI Umsetzungsrichteinen referenziert werden.
 
@@ -60,7 +60,21 @@ Um das maß an zu Implementierender Datensicherheitsmaßnahmen zu ermittel wurde
     \label{abb:Schutzbedarfsanalyse}
 \end{figure}
 
-Aus der Schutzbedarfsanalyse geht hervor das der Anwesenheitsplaner der Schutzbedarfskategorie normal zugeordnet werden kann. Das bedeutet das bei der Umsetzung die Basisanforderungen des BSI erfüllt werden müssen. In der Entwurfsphase werden dann die für das entstehende System passende Maßnahmen auf grundlage der BSI Anforderungen gewählt. Darunter fällt auch der Datenschutz, da die verarbeitete Daten Personen direkt zugeordnet werden können. Dementsprechend müssen auch für die gewährleistung des Datenschutzes Maßnahmen getroffen werden, die die Grundanforderungen des Datenschutzes sowie die Umsetzungsrichtlinien der Datenschutzbeauftragten umsetzen. Dabei liegt ein besonderer Fokus auf der Sicherheit der personenbezogenen Daten damit diese nur an die dafür autorisierte Benutzer gelangen. 
+Aus der Schutzbedarfsanalyse geht hervor das der Anwesenheitsplaner der Schutzbedarfskategorie normal zugeordnet werden kann. Das bedeutet das bei der Umsetzung die Basisanforderungen des BSI erfüllt werden müssen. In der Entwurfsphase werden dann die für das entstehende System passende Maßnahmen auf grundlage der BSI Anforderungen gewählt. Darunter fällt auch der Datenschutz, da die verarbeitete Daten Personen direkt zugeordnet werden können. Dementsprechend müssen auch für die gewährleistung des Datenschutzes Maßnahmen getroffen werden, die die Grundanforderungen des Datenschutzes sowie die Umsetzungsrichtlinien der Datenschutzbeauftragten umsetzen. Dabei liegt ein besonderer Fokus auf der Sicherheit der personenbezogenen Daten damit diese nur an die dafür autorisierte Benutzer gelangen.
+
+Um Benutzern Rollenbasierte Rechte zuweisen zu können und so eine Zugriffskontolle zu gewährleisten muss ein Rollen- und Berechtigungskonzept erstellt werden. Nach Vorgabe des BSI in \cite[KOP3]{BSIWeb} sollte dafür eine Access Control Matrix erstellt werden die Berechtigungen Rollen
+auf bestimmte Assets haben.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth,angle=0]{abb/Berechtigungsmatrix.pdf}
+    \caption[Beschreibung]{Access Control Matrix}
+    \label{abb:AccessControlMatrix}
+\end{figure}
+
+Die erstellt Access Control Matrix bezieht sich auf vier Rollen. Davon sind zwei Nutzerrollen und zwei Administratorenrollen für die Systeme. Referatsmitglieder sind prinzipiell alle Mitarbeiter des SMK die einem Referat zugeordnet sind. Diese dürfen eigene Anwesenheitsdaten eintragen und \ggfs ändern. Um für Kollegen die gerade nicht ihre Anwesenheit im System eintragen können gibt es die Rolle des Referatsadmin. Diese Rolle soll über eine AD Gruppe an die betreffenden Personen ausgerollt werden. Welche Person im Referat diesen status bekommt ist den Referaten selbst überlassen.
+
+Für die Administration der Systeme sind die Rollen des Datenbank- und des Systemadmins vorgesehen. Dabei lehnt sich das Berechtigungskonzept an die bereits vorhandenen Berechtigungsstrukturen im IT-Referat an. Der Datenbankamin kann im falle von Fehleintagen oder Korrekturen die nicht über den Referatsadmin möglich sind in der Datenbank die Einträge korrigierten. Für etwaige Wartungs- oder Updatarbeiten am System gibt es den Systemadmin. Er hat Vollzugriff auf alle Systeme und kann Updates oder Wartungsarbeiten ohne Einschränkungen durchführen.
 
 %TODO:BSI-Standards 200-2 , 
 
