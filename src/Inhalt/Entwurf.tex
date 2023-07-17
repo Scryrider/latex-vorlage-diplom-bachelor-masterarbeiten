@@ -17,7 +17,6 @@ Im Leitfaden zur Entwicklung sicherer Webanwendungen werden spezifisch für Webs
 
 \subsection{Logikentwurf}
 \label{sec:Logikentwurf}
-%TODO:MVVM
 Der Logikentwurf soll basierend auf dem Use-Case-Diagramm, siehe Abbildung \ref*{fig:Use-Case-Diagramm} entstehen. Dabei sollen aus den Anwendungsfällen die benötigten Funktionen des Programms erarbeitet werden. Für einen ersten Überblick des gesamten Prozesses wurde ein Ablaufdiagramm erstellt was die Prozessschritte mit den benötigten Datenquellen zeigt, siehe Abbildung \ref*{abb:Flow}.
 
 Die Anwendung soll als erstes den Nutzer authentifiezieren um die Berechtigungen feststellen zu können. Wenn der Nutzer berechtigt ist wird seine Referatszugehörigkeit mittels des AD ermittelt. Nach dem Login Prozess werdem dem Nutzer im Frontend die Anweseheitsdaten seiner Kollegen das aktuellen Monats angezeit. Dort kann er seine eigenen Anwesenheiten ändern oder in den Monatsansichten vor und zurück springen. Jede änderung eines eigenen oder im Falle eines Admins, eines Datensatzes im generellen wird direkt an die Datenbank übermittelt und dort gespeichert.
@@ -33,6 +32,7 @@ Um die einzelnen Prozessschritte als Funktionen näher zu beschreiben wurden Pro
 
 \subsection{Softwaredesigne}
 \label{sec:Softwaredesigne}
+%TODO: Die sicherheitsstandarts noch refernezieren
 Für die Umsetzung des Logikentwurfs mit dem Blazor Framework soll eines der beiden in Absatz \ref{sec:Framework} \nameref{sec:Framework} aufgezeigten Muster implementiert werden. Es konnten sowohl mit MVC als auch mit MVVM bereits Erfahrungen gesammelt werden und deshalb wurde die Entscheidung für ein Muster hauptsächlich aus individuellen Gründen getroffen. Das MVVM Muster ist übersichtlicher und wurde in anderen Projekten bereits erfolgreich umgesetzt. Dasswegen fiel die Wahl auf den einsatz des MVVM Musters.
 
 Damit ergibt sich die Strukturierung des Softwarekomponenten die für das Projekt benötigt werden. Es werden Model Klassen benötigt die, die Anwesenheitsdaten repräsentieren und in der Datenbank persistent gespeichert werden. Das ViewModel ist ebenfalls eine Klasse die, die gesamte Funktionalität für eine View beinhaltet. Damit wird pro View ein ViewModel erstellt. Die View ist nur für die Darstellung zuständig und ist ein HTML Tamplate in das dynamisch Werte aus dem ViewModel gerendert werden.
@@ -42,9 +42,15 @@ Für eine bessere übersicht und ggf. wiederverwendbarkeit von Code sollen für 
 
 \subsection{Systementwurf}
 \label{sec:Systementwurf}
+In der Vorbetrachtung wurde sich für die monolithische Systemarchitektur entschieden, da diese einfach Aufzubauen ist und den geringsten Komplexitätsgrad alles Systemarchitekturen aufweist. Dadurch vereinfacht sich die Entwicklung und die Tests, da alle Komponenten innerhalb einer einzigen Anwendung zusammengefasst werden. Eine Skizze des entsteheden Gesamtsystems siehe Anhang \ref{abb:Systemarchitektur}.
 
+Der Webserver auf dem die WebApp läuft bildet das Zentrum des Systems. Um diesen bereitzustellen gäbe es verschiedene Optionen. Docker könnte in Betracht gezogen werden, da die Anwendung dort einer isolierte und portable Umgebung, unabhängig von der zugrunde liegenden Serverkonfiguration ausgeführt werden könnte. Das bereitstellen der WebApp als Container ist in der Infrastruktur des SMK jedoch nur wenig sinnvoll. Zum einen besteht kein Server der Docker Container bereitstellen kann zu andern kann das bereitstellen von Diensten die Anbindung an das AD benötigen für Probleme sorgen. Dementsprechend muss ein Webserver als Host erstellt werden. Dort eignet sich im Kontext des SMK ein IIS Server, dieser auf einem bereits vorhandenen Windows Server installiert werden kann.
 
+Der IIS Server von Microsoft ist der einzige der für das Hosten von Blazor Server WebApps mit ASP.NET Core in frage kommt, da das Framework ASP.NET SignalR zur Kommunikation zwischen Client und Server nutzt. SignalR ist eine von Microsoft entwickelte Bibliothek, die Echtzeit-Webfunktionalitäten in Webanwendungen ermöglicht. Mit SignalR kann eine bidirektionale Kommunikation zwischen Webserver und Webclient herstellen die WebSocket-Verbindungen nutzt um effiziente Verbindung herzustellen. Damit ermöglicht SignalR eine zuverlässige Echtzeit-Kommunikation zwischen Server und Client. (vgl. \cite{SignalR}, \cite{SignalRPlatf})
 
+Die Datenbank als zentrales Speichermedium, sollte im Datenbankcluster des SMK betrieben werden. Für Datenbankserver gibt es im SMK ein eigenes Netz was durch Firewalls speziell abgesichert wird. Da nur der Server eine Verbindung zur Datenbank benötigt um die Daten abzurufen kann nur er durch die Firewall auf den Server zugreifen. Clients haben keine Möglichkeit die Datenbank zu erreichen. Damit wird die Datensicherheit deutlich erhöht. Als Datenbankmanagementsystem (DBMS) werden im SMK nur Microsoft SQL Server betrieben. Um der Vorgabe, möglichst vorhandene Infrastruktur zu nutzen folge zu leisten, wird die Datenbank auf einem SQL Server laufen.
+
+Für die Authentifizierung und Autorisierung der Benutzer wird das bereits bestehende Active Directory des Freistaates Sachsen verwendet. Der Webserver ist in die vorhandenen Domäne des SMK integriert, wodurch eine Authentifizierung am IIS mittels Windows Login durchgeführt werden kann.
 
 \subsection{Datenentwurf}
 \label{sec:Datenentwurf}
