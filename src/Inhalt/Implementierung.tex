@@ -25,8 +25,7 @@ Für die persistente und zentrale Speicherung der Anwesenheitsdaten wurde ein re
 Dapper ist eine von den Stack Overflow Entwicklern geschriebene Open-Source ORM, die besonderen Fokus auf Optimierung des Datenzugriffs legt. Bei der Nutzung von Dapper schreibt der Entwickler die SQL Befehle selbst und Dapper bietet Transformationsfunktionen wie \zB das einbetten von Objekten in den SQL Befehl oder das Umwandeln von Datensätzen aus der Datenbank in Listen an. Das macht den Datenbankzugriff sehr intuitiv und Fehler können schnell gefunden werden, da die SQL Befehle im Code sichtbar sind. Dapper implementiert auch eingebaute Funktionen gegen SQL Injections und erhöt somit auch die Datensicherheit. Durch die Kombination aus einfachen SQL Befehlen und der sehr guten Transformationsmechanik von Dapper können die Daten sehr einfach aus der Datenbank und auch in die Datenbank geschrieben werden. (vgl. \cite{Dapper})
 
 Am schwierigsten gestaltete sich Implementierung das Lesens der Anwesenheitsdatensätze aus der Datenbank. Gespeichert sind diese wie in Abbildung \ref{abb:ERM} zu sehen mit SID,Datum und Anwesenheitsstatus. Im Model für die View wird das Datenpaar aus Datum und Anwesenheitsstatus als Dictionary dem Objekt deines Nutzers zugeordnet. Um die Leistung zu verbessern wurde sich dazu entschlossen die Fähigkeit von Dapper, Klassen Attribute auf datenbank Attribute zu Mappen, auszunutzen indem man durch das geschickte ausnutzen der Aliase in SQL mittel Key und Value Zuordnung direkt ein Dictionary befüllt, was dann unter Angabe der SID des zugehörigen User-Objektes dem passenden Objekt als Rückgabewert zugeordnet werden kann.
-
-
+\\
 \begin{lstlisting}[frame=single]
 public Task<Dictionary<DateTime, string>> GetUserDateStat(string sid, int month)
 {
