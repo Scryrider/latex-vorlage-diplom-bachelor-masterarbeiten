@@ -1,0 +1,50 @@
+\section{Implementierung}
+\label{sec:Implementierung}
+In der Implementierungsphase wird die Software wurde gemäß den Anforderungen und Spezifikationen aus \nameref{sec:Analysephase} und \nameref{sec:Entwurf} Umgesetzt. Der Entwicklungsprozess ist in mehrere Phasen unterteilt, darunter die Programmierung, das Testen und letztlich die Migration ins Livesystem.
+
+Auf Grundlage der in der im \nameref{sec:Entwurf} angefertigten Modelle wurden daraus konkrete Datenstrukturen und Algorithmen umgesetzt. Während der Implementierungsphase wurde besonderes Augenmerk auf die Modularität und Wiederverwendbarkeit des Codes gelegt, um die spätere Erweiterbarkeit der Software zu erleichtern.
+
+\subsection{Kernmodule des Anwesenheitsplaners}
+\label{sec:Kernmodule}
+Die Entwicklung umfasste mehrerer Kernmodule, die jeweils spezifische Aufgaben und Funktionen der Software erfüllten. Diese werden in den folgenden Sektionen näher vorgestellt. Dabei wird zuerst auf das zu Lösende Problem kurz eingegangen und dann die Lösung für den Anwesenheitsplaner erläutert. Dafür wird \ggfs auch Bezug auf Codesegmente genommen die sich im Anhang befinden. Eine Übersicht über alle Klassen siehe Anhang \ref{abb:Klassendiagramm}.
+
+\subsubsection{AD Manager}
+\label{sec:ADManager}
+Die Kernfunktionalität des Anwesenheitsplaners ist es, einem Nutzer nach Anmeldung an der Weboberfläche die Anwesenwesenheiten seiner Referatsmitglieder anzuzeigen. Dafür muss dem Programm allerdings bekannt sein in welchem Referat sich der Benutzer befindet, damit für Ihn passende Einträge aus der Datenbank geladen werden können. Diese Informationen stellt die Klasse AD Manager bereit.
+
+Bei der Anmeldung an der Weboberfläche wird der Benutzer durch seine bereits erfolgte Windows Anmeldung durch den IIS als Benutzer erkannt. Dadurch kann über das Blazor und .NET Framework auf den angemeldeten Benutzer als UserPrincipal Klasse zugreifen. Mit diesem Objekt kann man nun über eine AD Abfrage vom aktuellen Benutzer den AD Wert für department auslesen. Somit kann aus dem AD für den Nutzer das richtige Referat ermittelt werden. Diese Funktionalität wird über GetUserInfo() umgesetzt. Diese Methode gibt noch eine weitere wichtige Information, die SID des Benutzers zurück. Die SID dient zur eineindeutigen Identifizierung des Nutzers und wird in der Datenbank als Primärschlüssel für die Nutzer verwendet. Die gefundenen Informationen werden dann als Dictionary an die Geschäftslogik übergeben. Hier könnten als falls nötig sehr einfach weitere Informationen für die Anwendung angefügt werden.
+
+Die zweite Funktionalität ist die GetPersonsInDepartment(string department) Methode. Diese wird genutzt um für den aktuellen Benutzer die zugehörigen Einträge für alle Rederatsmitglieder zu erhalten. Das Referat des angemeldeten Benutzers wird in die Methode übergeben und diese durchsucht dann mit einem PrincipalSearcher das AD in der SMK OU nach den passenden AD Konten die auch dem Referat angehören und gibt diese zurück.
+
+Der AD Manager wird dann in der Datenlogik aufgerufen und die Rückgabewerte werden für die Interaktion mit der Datenbank benötigt. Ohne eine Verbindung zum AD kann der Anwesenheitsplaner also nicht funktionieren.
+
+\subsubsection{Daten und Datenlogik}
+\label{sec:Daten}
+Für die persistente und zentrale Speicherung der Anwesenheitsdaten wurde ein relationale Datenbank ausgewählt. Um die Daten aus der Datenbank zu Lesen und neue oder aktualisierte Daten zu schreiben wird eine Schnittstelle zur Datenbank benötigt. Dort wurde sich gegen den Einsatz des weit verbreiteten Entity Frameworks entscheiden, da dieses Framework eine Ausgewachsener Microsoft Object Relational Mapper (ORM) ist. Damit ist es die wichtigste .NET-Datenzugriffs-API. Jedoch kann der Einsatz einer ORM sehr Komplex werden und im Fehlerfall für ungeübte Entwickler zu großen Verzögerungen bei der Fehlerbehebung führen. Deswegen wurde die Mikro-ORM Dapper verwendet.
+
+Dapper ist eine von den Stack Overflow Entwicklern geschriebene Open-Source ORM, die besonderen Fokus auf Optimierung des Datenzugriffs legt. Bei der Nutzung von Dapper schreibt der Entwickler die SQL Befehle selbst und Dapper bietet Transformationsfunktionen wie \zB das einbetten von Objekten in den SQL Befehl oder das Umwandeln von Datensätzen aus der Datenbank in Listen an. Das macht den Datenbankzugriff sehr intuitiv und Fehler können schnell gefunden werden, da die SQL Befehle im Code sichtbar sind. Dapper implementiert auch eingebaute Funktionen gegen SQL Injections und erhöt somit auch die Datensicherheit. Durch die Kombination aus einfachen SQL Befehlen und der sehr guten Transformationsmechanik von Dapper können die Daten sehr einfach aus der Datenbank und auch in die Datenbank geschrieben werden. (vgl. \cite{Dapper})
+
+Am schwierigsten gestaltete sich Implementierung das Lesens der Anwesenheitsdatensätze aus der Datenbank. Gespeichert sind diese wie in Abbildung \ref{abb:ERM} zu sehen mit SID,Datum und Anwesenheitsstatus. Im Model für die View wird das Datenpaar aus Datum und Anwesenheitsstatus als Dictionary dem Objekt deines Nutzers zugeordnet. Um die Leistung zu verbessern wurde sich dazu entschlossen die Fähigkeit von Dapper, Klassen Attribute auf datenbank Attribute zu Mappen, auszunutzen indem man durch das geschickte ausnutzen der Aliase in SQL mittel Key und Value Zuordnung direkt ein Dictionary befüllt, was dann unter Angabe der SID des zugehörigen User-Objektes dem passenden Objekt als Rückgabewert zugeordnet werden kann.
+\begin{lstlisting}
+
+public Task<Dictionary<DateTime, string>> GetUserDateStat(string sid, int month)
+{
+string sql = @"
+SELECT DISTINCT A_Datum AS[Key], A_Status AS[Value] 
+FROM dbo.Anwesenheit WHERE A_SID = @SID AND MONTH(A_Datum) = @MONTH
+";
+
+return _dbasync.LoadDataDictAsync<Dictionary<DateTime, string>, dynamic>(sql, new {
+     SID = sid, MONTH = month 
+     });
+}
+\end{lstlisting}
+
+\subsubsection{Frontend}
+\label{sec:Frontend}
+
+\subsection{Tests und Qualitätssicherung}
+\label{sec:Tests}
+
+\subsection{Migrationsplan}
+\label{sec:Migrationsplan}
