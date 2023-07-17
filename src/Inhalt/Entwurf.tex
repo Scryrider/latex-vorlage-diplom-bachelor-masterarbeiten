@@ -20,6 +20,18 @@ Um die einzelnen Prozessschritte als Funktionen näher zu beschreiben wurden Pro
     \label{abb:Flow}
 \end{figure}
 
+\subsection{Softwaredesigne}
+\label{sec:Softwaredesigne}
+Für die Umsetzung des Logikentwurfs mit dem Blazor Framework soll eines der beiden in Absatz \ref{sec:Framework} \nameref{sec:Framework} aufgezeigten Muster implementiert werden. Es konnten sowohl mit MVC als auch mit MVVM bereits Erfahrungen gesammelt werden und deshalb wurde die Entscheidung für ein Muster hauptsächlich aus individuellen Gründen getroffen. Das MVVM Muster ist übersichtlicher und wurde in anderen Projekten bereits erfolgreich umgesetzt. Dasswegen fiel die Wahl auf den einsatz des MVVM Musters.
+
+Damit ergibt sich die Strukturierung des Softwarekomponenten die für das Projekt benötigt werden. Es werden Model Klassen benötigt die, die Anwesenheitsdaten repräsentieren und in der Datenbank persistent gespeichert werden. Das ViewModel ist ebenfalls eine Klasse die, die gesamte Funktionalität für eine View beinhaltet. Damit wird pro View ein ViewModel erstellt. Die View ist nur für die Darstellung zuständig und ist ein HTML Tamplate in das dynamisch Werte aus dem ViewModel gerendert werden.
+%TODO:Quelle:https://learn.microsoft.com/de-de/dotnet/architecture/maui/mvvm
+
+Für eine bessere übersicht und ggf. wiederverwendbarkeit von Code sollen für die Datenbankkommunikation und die AD integration eigene bzw. vorhandene Bibliotheken verwendet werden die dann im ViewModel verwendet werden. Für die AD Abfragen soll eine Klassenbibliothek AD Manager erstellt werden und für die Datenbankkommunikation eine DataAccessLibrary. Diese Datenbankkommunikationsbiblithek soll dann die Grundlage für die Datenbankoperationen wie Laden oder Speichern von Daten in der Geschäftslogik sein. In der Geschäftslogik werden diese Methoden zu Laden oder Speichern mit einem SQL Befehl und Objekten an diese Bibliothek übergeben und diese übernimmt dann die Datenbankkommunikation. Das auslagern dieser Basisfunktionalität hat den Vorteil, dass es in anderen Projekten wieder eingesetzt werden kann.
+
+\subsection{Systementwurf}
+\label{sec:Systementwurf}
+
 
 
 
