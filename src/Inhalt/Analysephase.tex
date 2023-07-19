@@ -28,7 +28,7 @@ Basierend auf den in der Ist-Analyse gesammelten Erkenntnissen wird deutlich, da
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth,angle=0]{abb/use-case-diagramm.pdf}
-    \caption[Beschreibung]{Use-Case-Diagramm}
+    \caption[Use-Case-Diagramm]{Use-Case-Diagramm}
     \label{fig:Use-Case-Diagramm}
 \end{figure}
 
@@ -43,7 +43,7 @@ Um das geforderte System und dessen Komponenten zu skizzieren wurde ein Paketdia
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth,angle=0]{abb/Paketdiagramm.pdf}
-    \caption[Paketdiagramm: Skizze das Systems und dessen Komponenten]{Paketdiagramm}
+    \caption[Paketdiagramm als Skizze das Systems und dessen Komponenten]{Paketdiagramm}
     \label{abb:Paketdiagramm}
 \end{figure}
 
@@ -57,8 +57,8 @@ Um das Maß an zu implementierenden Datensicherheitsmaßnahmen zu ermitteln, wur
 
 \begin{table}[htbp]
     \centering
+    \caption[Schutzbedarfsanalyse]{Schutzbedarfsanalyse}
     \includegraphics[width=0.7\textwidth,angle=0]{abb/Schutzbedarfsanalyse.pdf}
-    \caption[Beschreibung]{Schutzbedarfsanalyse}
     \label{abb:Schutzbedarfsanalyse}
 \end{table}
 
@@ -70,12 +70,12 @@ Um Benutzern rollenbasierte Rechte zuweisen zu können und eine solche Zugriffsk
 
 \begin{table}[htbp]
     \centering
+    \caption[Access Control Matrix]{Access Control Matrix}
     \includegraphics[width=1\textwidth,angle=0]{abb/Berechtigungsmatrix.pdf}
-    \caption[Beschreibung]{Access Control Matrix}
     \label{abb:AccessControlMatrix}
 \end{table}
 
-Die erstellte Access Control Matrix setzt sich aus vier Rollen zusammen. Zwei davon sind Nutzerrollen, die anderen zwei Administratorenrollen für die Systeme. Referatsmitglieder sind prinzipiell alle Mitarbeiter des SMK, die einem Referat zugeordnet sind. Diese dürfen eigene Anwesenheitsdaten eintragen und \ggfs ändern. Um für Kollegen die gerade nicht ihre Anwesenheit im System eintragen können, Anwesenheiten zu setzen, gibt es die Rolle des Referatsadmins. Diese Rolle soll über eine AD Gruppe an die betreffenden Personen ausgerollt werden. Welche Person im Referat diesen Status bekommt, ist den Referaten selbst überlassen.
+Die erstellte Access Control Matrix setzt sich aus vier Rollen zusammen. Zwei davon sind Nutzerrollen, die anderen zwei Administratorenrollen für die Systeme. Referatsmitglieder sind prinzipiell alle Mitarbeiter des SMK, die einem Referat zugeordnet sind. Diese dürfen eigene Anwesenheitsdaten eintragen und \ggfs ändern. Um für Kollegen die gerade nicht ihre Anwesenheit im System eintragen können, Anwesenheiten zu setzen, gibt es die Rolle des Referatsadmins. Diese Rolle soll über eine Active Directory (AD) Gruppe an die betreffenden Personen ausgerollt werden. Welche Person im Referat diesen Status bekommt, ist den Referaten selbst überlassen.
 
 Für die Administration der Systeme sind die Rollen des Datenbank- und des Systemadmins vorgesehen. Dabei lehnt sich das Berechtigungskonzept an die bereits vorhandenen Berechtigungsstrukturen im IT-Referat an. Der Datenbankamin kann im Falle von fehlerhaften Eintragungen oder nötigen Korrekturen, die nicht über den Referatsadmin möglich sind, die Einträge in der Datenbank korrigierten. Für etwaige Wartungs- oder Updatarbeiten am System gibt es den Systemadmin. Er hat Vollzugriff auf alle Systeme und kann Updates oder Wartungsarbeiten ohne Einschränkungen durchführen.
 
