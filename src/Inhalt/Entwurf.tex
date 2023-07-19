@@ -4,7 +4,10 @@ In der Entwurfsphase sollen aus den Anforderungen Modelle der zu entwickelten So
 
 UML-Diagramme sind unter anderem ein effektives Werkzeug, um den Programm- und Datenentwurf zu unterstützen und zu dokumentieren. Letztendlich soll mithilfe geeigneter Modelle ein Entwurf der zu implementierenden Software erarbeitet werden. Dies umfasst die Festlegung des Softwaredesigns, der Datenstruktur und der grafische Oberfläche.
 
-Bei der Erstellung des Entwurfes müssen die Datensicherheitsanforderungen beachtet werden. Dafür sollte im Fall dieses Projektes der Leitfaden zur Entwicklung sicherer Webanwendungen und der IT-Grundschutz-Baustein CON.8 Software-Entwicklung des BSI beachtet werden. Sie enthalten funktionale und nichtfunktionale Anforderungen, die bei er Implementierung beachtet werden müssen. So wird in BSI CON.8 ein sicheres Systemdesign gefordert. Dafür müssen \ua die folgenden Anforderungen beachtet werden:
+Bei der Erstellung des Entwurfes müssen die Datensicherheitsanforderungen beachtet werden. Dafür sollte im Fall dieses Projektes der Leitfaden zur Entwicklung sicherer Webanwendungen und der IT-Grundschutz-Baustein CON.8 Software-Entwicklung des BSI beachtet werden. Sie enthalten funktionale und nichtfunktionale Anforderungen, die bei er Implementierung beachtet werden müssen. So wird in BSI CON.8 ein sicheres Systemdesign gefordert.
+\newpage
+
+Dafür müssen \ua die folgenden Anforderungen beachtet werden:
 \begin{itemize}
     \item  \gqq{Zur Benutzer-Authentisierung und Authentifizierung MÜSSEN vertrauenswürdige Mechanismen verwendet werden, die den Sicherheitsanforderungen an die Anwendung entsprechen} (\cite[S.5]{BSICON8})
     \item  \gqq{Sicherheitsrelevante Ereignisse MÜSSEN in der Art protokolliert werden, dass sie im Nachgang ausgewertet werden können} (\cite[S.5]{BSICON8})
@@ -18,16 +21,14 @@ Im Leitfaden zur Entwicklung sicherer Webanwendungen werden spezifisch für Webs
 \label{sec:Logikentwurf}
 Der Logikentwurf soll basierend auf dem Use-Case-Diagramm in Abbildung \ref{fig:Use-Case-Diagramm} entstehen. Dabei werden aus den Anwendungsfällen die benötigten Funktionen des Programms erarbeitet. Für einen ersten Überblick des gesamten Prozesses wurde ein Ablaufdiagramm erstellt, was die Prozessschritte mit den benötigten Datenquellen zeigt, siehe Abbildung \ref{abb:Flow}.
 
-Die Anwendung soll als erstes den Nutzer authentifizieren, um die Berechtigungen feststellen zu können. Wenn der Nutzer berechtigt ist, wird seine Referatszugehörigkeit mittels des AD ermittelt. Nach dem Login Prozess werden dem Nutzer im Frontend die Anwesenheitsdaten seiner Kollegen des aktuellen Monats angezeigt. Darin kann er seine eigenen Anwesenheiten ändern oder in den Monatsansichten vor und zurück springen. Jede Änderung eines eigenen oder im Falle eines Admins, eines Datensatzes im generellen wird direkt an die Datenbank übermittelt und dort gespeichert.
-
-Um die einzelnen Prozessschritte als Funktionen näher zu beschreiben, wurden Programmablaufpläne (PAP) erstellt. Beispielhaft ist im Anhang \ref{abb:PAP} der PAP für die Funktion des Änderns von Anwesenheiten.
-
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.9\textwidth,angle=0]{abb/Flow-Diagramm.drawio.pdf}
     \caption[Ablaufdiagramm]{Ablaufdiagramm}
     \label{abb:Flow}
 \end{figure}
+
+Die Anwendung soll als erstes den Nutzer authentifizieren, um die Berechtigungen feststellen zu können. Wenn der Nutzer berechtigt ist, wird seine Referatszugehörigkeit mittels des AD ermittelt. Nach dem Login Prozess werden dem Nutzer im Frontend die Anwesenheitsdaten seiner Kollegen des aktuellen Monats angezeigt. Darin kann er seine eigenen Anwesenheiten ändern oder in den Monatsansichten vor und zurück springen. Jede Änderung eines eigenen oder im Falle eines Admins, eines Datensatzes im generellen wird direkt an die Datenbank übermittelt und dort gespeichert. Um die einzelnen Prozessschritte als Funktionen näher zu beschreiben, wurden Programmablaufpläne (PAP) erstellt. Beispielhaft ist im Anhang \ref{abb:PAP} der PAP für die Funktion des Änderns von Anwesenheiten.
 
 \subsection{Softwaredesigne}
 \label{sec:Softwaredesigne}
@@ -70,3 +71,4 @@ Für das Anlegen der Datenstrukturen im Programmcode und in der Datenbank wurde 
 \label{sec:GUI Entwurf}
 Für den Entwurf der GUI wurde sich maßgeblich an der Referenztabelle, siehe Anhang \ref{abb:Ausgangstabelle} die in der \nameref{sec:Analysephase} entwickelt wurde, orientiert. Daraus wurde ein webtauglicher Entwurf erstellt, der vor allem die Navigation des Monats im Gegensatz zur Excel Tabelle über Schaltflächen realisiert. Der GUI Entwurf ist einsehbar als Abbildung \ref{abb:GUIEntwurf} im Anhang.
 
+\newpage

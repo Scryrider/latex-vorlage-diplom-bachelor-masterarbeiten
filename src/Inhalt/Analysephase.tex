@@ -17,6 +17,8 @@ Für die Datenanalyse wurden von den beteiligten Referaten eine Kopie ihrer Exce
 
 Die neue Lösung sollte die Möglichkeit bieten, dass mehrere Nutzer gleichzeitig auf die Anwesenheitsdaten zugreifen und diese aktualisieren können. Das Einführen eines Rechtesystems und die Integration einer Datenbank könnten die Datensicherheit des Anwesenheitsplaners erheblich verbessern.
 
+\newpage
+
 \subsection{Anforderungen an den Anwesenheitsplaner}
 \label{sec:Soll-Zustand}
 Basierend auf den in der Ist-Analyse gesammelten Erkenntnissen wird deutlich, dass der Anwesenheitsplaner an vielen Stellen verbessert werden muss. Um die zu Anforderungen an das neue System zu visualisieren, wurde eine Use-Case-Analyse durchgeführt. Dabei wird das gewünschte Verhalten der Software dem Nutzer gegenüber als Anwendungsfall spezifiziert. Aus der Summer aller Nutzungsfälle lässt sich dann die gewünschte Funktionalität der Software ableiten, ohne dabei auf konkrete Realisierungsschritte eingehen zu müssen.(vgl. \cite[S. 164]{neumann-2002})
@@ -31,6 +33,8 @@ Basierend auf den in der Ist-Analyse gesammelten Erkenntnissen wird deutlich, da
 Aus dem Use-Case-Diagramm in Abbildung~\ref{fig:Use-Case-Diagramm} geht hervor, das ein Nutzer sich am System anmelden können, soll um Anwesenheitsdaten seines Referates zu sehen und eigene Daten zu verwalten. Das Verwalten soll das Erstellen, Bearbeiten und Löschen von Einträgen beinhalten. Des Weiteren wird auch ein zweiten Nutzertyp benötigt, der als Admin fungiert und Einträge von anderen Mitarbeitern des Referates ändern kann.
 
 Aus den Interviews konnten noch weitere Spezifikationen ermittelt werden. Am wichtigsten ist die Möglichkeit des Mehrbenutzerzugriffs. Die neue Software sollte es ermöglichen, mehrere Benutzer gleichzeitig auf den Anwesenheitsplaner zugreifen und ihre Daten aktualisieren zu lassen. Dadurch werden Engpässe bei der Aktualisierung der Anwesenheitsdaten vermieden und die Benutzerfreundlichkeit verbessert. Um die Benutzerfreundlichkeit noch weiter zu verboptimieren, soll eine ähnliche Benutzeroberfläche wie die der Excel Tabelle entstehen, die zusätzlich das Eintragen der Datensätze durch \zB Mehlfachauswahl vereinfacht.
+
+\newpage
 
 Zudem sollen Datenschutz und Datensicherheit im neuen System gewährleistet werden, indem Sicherheitsmaßnahmen vor unbefugtem Zugriff oder Verlust der Daten schützen. Es werden Mechanismen zur Datensicherung und Benutzer-Authentifizierung benötigt, um zu gewährleisten, dass Benutzer nur auf die Daten zugreifen und Änderungen vornehmen können, für die sie autorisiert sind.
 
@@ -72,5 +76,7 @@ Um Benutzern rollenbasierte Rechte zuweisen zu können und eine solche Zugriffsk
 \end{table}
 
 Die erstellte Access Control Matrix setzt sich aus vier Rollen zusammen. Zwei davon sind Nutzerrollen, die anderen zwei Administratorenrollen für die Systeme. Referatsmitglieder sind prinzipiell alle Mitarbeiter des SMK, die einem Referat zugeordnet sind. Diese dürfen eigene Anwesenheitsdaten eintragen und \ggfs ändern. Um für Kollegen die gerade nicht ihre Anwesenheit im System eintragen können, Anwesenheiten zu setzen, gibt es die Rolle des Referatsadmins. Diese Rolle soll über eine Active Directory (AD) Gruppe an die betreffenden Personen ausgerollt werden. Welche Person im Referat diesen Status bekommt, ist den Referaten selbst überlassen.
+
+\newpage
 
 Für die Administration der Systeme sind die Rollen des Datenbank- und des Systemadmins vorgesehen. Dabei lehnt sich das Berechtigungskonzept an die bereits vorhandenen Berechtigungsstrukturen im IT-Referat an. Der Datenbankamin kann im Falle von fehlerhaften Eintragungen oder nötigen Korrekturen, die nicht über den Referatsadmin möglich sind, die Einträge in der Datenbank korrigierten. Für etwaige Wartungs- oder Updatarbeiten am System gibt es den Systemadmin. Er hat Vollzugriff auf alle Systeme und kann Updates oder Wartungsarbeiten ohne Einschränkungen durchführen.
