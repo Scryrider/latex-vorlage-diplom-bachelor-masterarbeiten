@@ -13,7 +13,6 @@ Bei der Erstellung des Entwurfes müssen die Datensicherheitsanforderungen beach
 
 Im Leitfaden zur Entwicklung sicherer Webanwendungen werden spezifisch für Webserver geeignete Sicherheitsanforderungen definiert. Beispielsweise wird eine Zugriffskontrolle, bei der Objektzugriffe auf vorhandene Berechtigungen geprüft werden, gefordert. Ebenfalls soll grundlegend das Least Privilege Konzept verfolgt werden, bei dem jede Komponente oder jeder Benutzer nur die notwendigen Berechtigungen besitzt, um eine Aktion auszuführen. (vgl. \cite{BSIWeb})
 
-%TODO:QUELLE https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/Studien/Webanwendungen/Webanw_Auftragnehmer.pdf?__blob=publicationFile&v=1
 
 \subsection{Logikentwurf}
 \label{sec:Logikentwurf}
@@ -32,7 +31,7 @@ Um die einzelnen Prozessschritte als Funktionen näher zu beschreiben, wurden Pr
 
 \subsection{Softwaredesigne}
 \label{sec:Softwaredesigne}
-%TODO: Die sicherheitsstandarts noch refernezieren
+
 Für die Umsetzung des Logikentwurfs mit dem Blazor Framework soll eines der beiden in Absatz \ref{sec:Framework} \nameref{sec:Framework} aufgezeigten Muster implementiert werden. Es konnten sowohl mit MVC als auch mit MVVM bereits Erfahrungen gesammelt werden, weshalb  die Entscheidung für ein Muster hauptsächlich aus individuellen Gründen getroffen wurde. Das MVVM Muster ist übersichtlicher und wurde in anderen Projekten bereits erfolgreich umgesetzt. Deswegen fiel die Wahl auf den Einsatz des MVVM Musters.
 
 Damit ergibt sich die Strukturierung des Softwarekomponenten die für das Projekt benötigt werden. Es werden Model Klassen benötigt die, die Anwesenheitsdaten repräsentieren und in der Datenbank persistent gespeichert werden. Das ViewModel ist ebenfalls eine Klasse die, die gesamte Funktionalität für eine View beinhaltet. Damit wird pro View ein ViewModel erstellt. Die View ist nur für die Darstellung zuständig und ist ein HTML Tamplate, in das dynamisch Werte aus dem ViewModel gerendert werden. (vgl. \cite{MVVM})
@@ -65,7 +64,7 @@ Für das Anlegen der Datenstrukturen im Programmcode und in der Datenbank wurde 
     \caption[Entity-Relationship-Modell]{ERM}
     \label{abb:ERM}
 \end{figure}
-%TODO:ERM erklären mit Quelle?
+
 
 \subsection{GUI Entwurf}
 \label{sec:GUI Entwurf}
