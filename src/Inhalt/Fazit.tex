@@ -8,7 +8,7 @@ Diese Arbeit widmete sich der Entwicklung eines neuen Anwesenheitsplaners für d
 
 Es wurde sich für eine Eigenentwicklung entschieden, da keines der verglichenen Softwareprodukte passend war. Für die Eigenentwicklung wurden dann verschiedene Umsetzungsvarianten wie WebApps und Desktopanwendungen in Betracht gezogen. Am Ende wurde sich für die Entwicklung einer WebApp mit einer Monolith-Systemarchitektur entschieden. Als Framework für die Entwicklung wird Blazor Server eingesetzt.
 
-Nach der Entscheidung für eine Umsetzungsvariante konnte auf Grundlage der Analyse dann der Software- und Systementwurf erstellt werden. Für den Entwurf der Geschäftslogik wurden Ablaufpläne und Klassendiagramme erstellt. Das System soll am Ende aus einem Webserver, der die WebApp hostet und einer Datenbank bestehen. Die Datenbank ist nur mit dem IIS Webserver verbunden und die Clients greifen ausschließlich auf den Webserver zu. Für die Erstellung der Datenbank wurde ein ERM angelegt auf Grundlage der Referenztabelle, siehe Tabelle \ref{abb:Ausgangstabelles}.
+Nach der Entscheidung für eine Umsetzungsvariante konnte auf Grundlage der Analyse dann der Software- und Systementwurf erstellt werden. Für den Entwurf der Geschäftslogik wurden Ablaufpläne und Klassendiagramme erstellt. Das System soll am Ende aus einem Webserver, der die WebApp hostet und einer Datenbank bestehen. Die Datenbank ist nur mit dem IIS Webserver verbunden und die Clients greifen ausschließlich auf den Webserver zu. Für die Erstellung der Datenbank wurde ein ERM angelegt auf Grundlage der Referenztabelle, siehe Abbildung \ref{abb:Ausgangstabelle} im Anhang.
 
 In der letzten Phase wurden der Entwurf implementiert. Dazu wurde die Datenstruktur in der Datenbank angelegt und die WebApp in Visual Studio entwickelt. Es konnten erfolgreich alle funktionalen Anforderungen implementiert werden, jedoch musste dafür bei der Datenlogik und der Implementierung des MVVM Modells technische Schuld aufgebaut werden. Am Ende konnte der entwickelte Prototyp von mehreren Mitarbeitern getestet werden. Dabei wurde sichtbar, dass der Abbau der technischen Schuld vor der Migration ins Live System notwendig ist, Datenschutz- und Datensicherheit gewährleistet werden müssen. Dementsprechend wird es eine zweite Entwicklungsphase geben müssen, in der die Fehler behoben werden sollen.
 
@@ -19,7 +19,7 @@ Als Ergebnis des Projektes konnte ein funktionsfähiger Prototyp entwickelt werd
 \begin{figure}[htb]
     \centering
     \includegraphics[width=1\textwidth,angle=0]{abb/Buttons_GUI.png}
-    \caption[Beschreibung]{Schaltflächen}
+    \caption[Schaltflächen]{Schaltflächen}
     \label{abb:Buttons_GUI}
 \end{figure}
 
@@ -43,6 +43,7 @@ Die Auswahl der Technologien für die Umsetzung erwies sich im Nachhinein als se
 
 Die größten Schwierigkeiten lagen in der Umsetzung der Datenschutz- und Datensicherheitsrichtlinien. Hier gab es während der Analyse-, Entwurf- und Implementierungs-Phase immer wieder Rücksprachen mit den verantwortlichen im SMK. Doch angemessene Maßnahmen für die geforderten Standards des BSI zu finden und diese Umzusetzen gestalten, stellte sich als viel zeitintensiver heraus, als erwartet. Deswegen musste von dem Plan ein für den Einsatz im Live System geeignete Software zu entwickeln Abstand genommen werden. Stattdessen wurde die Software als Prototyp zur Demonstration sowie für Tests verwendet, welche in einer zweiten Entwicklungsphase weiter angepasst werden sollen.
 
+\newpage
 \subsection{Ausblick}
 \label{sec:Ausblick}
 
@@ -53,4 +54,5 @@ Die zweite Entwicklungsphase wird daher darauf ausgerichtet werden, die technisc
 \subsection{Schlusswort}
 \label{sec:Abschluss}
 
-Abschließend wird festgehalten, dass die Entwicklung des Anwesenheitsplaners ein herausforderndes, aber zugleich äußerst interessantes Projekt darstellte. Die gewonnenen Erkenntnisse und Erfahrungen werden für zukünftige Entwicklungsprojekte von großem Nutzen sein. Der größtmögliche Lernfortschritt konnte während der Recherche zu den System- und Softwarearchitekturen erzielt werden. In dieser ersten Auseinandersetzung mit der Thematik konnten neue Kompetenzen gewonnen werden, die zukünftig weiterhin ausgebaut und angewandt werden sollen, denn das Verständnis für die Konzepte, die einen Softwareentwurf fundieren, bilden einen guten Ausgangspunkt.
+Abschließend wird festgehalten, dass die Entwicklung des Anwesenheitsplaners ein herausforderndes, aber zugleich äußerst interessantes Projekt darstellte. Die gewonnenen Erkenntnisse und Erfahrungen werden für zukünftige Entwicklungsprojekte von großem Nutzen sein. Der größtmögliche Lernfortschritt konnte während der Recherche zu den System- und Softwarearchitekturen erzielt werden. In dieser ersten Auseinandersetzung mit der Thematik konnten neue Kompetenzen gewonnen werden, die zukünftig weiterhin ausgebaut und angewandt werden sollen.
+

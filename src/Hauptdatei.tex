@@ -19,15 +19,14 @@
 %Code
 \usepackage{listings}
 
-
-
+%Schriftart
+\usepackage{helvet}
+\renewcommand\familydefault{\sfdefault}
 
 % weitere Pakete
 % Grafiken aus PNG Dateien einbinden
 \usepackage{graphicx}
 
-%Harvard Zitiermethode
-%\usepackage{natbib}
 
 % Deutsche Sonderzeichen und Silbentrennung nutzen
 \usepackage[ngerman]{babel}
@@ -127,26 +126,26 @@
 % für Listings
 \usepackage{listings}
 \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, keywordstyle=\color{black}\bfseries, stringstyle=\ttfamily,showstringspaces=false,basicstyle=\footnotesize,captionpos=b}
-\lstset{language=java}
+\lstset{language=csh}
 
 % Indexerstellung
 \makeindex
 
 % Abkürzungsverzeichnis
-\usepackage[german]{nomencl}
-\let\abbrev\nomenclature
+%\usepackage[german]{nomencl}
+%\let\abbrev\nomenclature
 
 % Abkürzungsverzeichnis LiveTex Version
 % Titel des Abkürzungsverzeichnisses
-\renewcommand{\nomname}{Abkürzungsverzeichnis}
+%\renewcommand{\nomname}{Codesegmente}
 % Abstand zwischen Abkürzung und Erläuterung
-\setlength{\nomlabelwidth}{.25\textwidth}
+%\setlength{\nomlabelwidth}{.25\textwidth}
 % Zwischenraum zwischen Abkürzung und Erläuterung mit Punkten
-\renewcommand{\nomlabel}[1]{#1 \dotfill}
+%\renewcommand{\nomlabel}[1]{#1 \dotfill}
 % Variation des Abstandes der einzelnen Abkürzungen zu einander
-\setlength{\nomitemsep}{-\parsep}
+%\setlength{\nomitemsep}{-\parsep}
 % Index mit Abkürzungen erzeugen
-\makenomenclature
+%\makenomenclature
 %\makeglossary
 
 % Abkürzungsverzeichnis TeTEX Version
@@ -172,8 +171,8 @@
 \input{latex_einstellungen/Befehle}
 
 % Schriftart Helvetica verwenden
-%\usepackage{helvet}
-%\renewcommand\familydefault{\sfdefault}
+
+
 
 % Leere Seite am Anfang
 \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
@@ -192,14 +191,20 @@
 \newpage
 
 % Sperrvermerk
-\thispagestyle{empty}
-\input{sperrvermerk}
+%\thispagestyle{empty}
+%\input{sperrvermerk}
+
+% Eidesstattliche Erklärung
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{Eidesstattliche Erklärung}
+\input{erklaerung}
 
 \newpage
 
 % Einleitung / Abstract
-\thispagestyle{empty}
-\input{0_abstract}
+%\thispagestyle{empty}
+%\input{0_abstract}
 
 % einfacher Zeilenabstand
 \singlespacing
@@ -262,13 +267,13 @@
 %%%%
 
 % das Abkürzungsverzeichnis
-\newpage
+%\newpage
 % das Abkürzungsverzeichnis ausgeben
-\fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
-\input{latex_einstellungen/abkuezungen/abkuerzungen}
-\printnomenclature[3cm]
+%\fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
+%\input{latex_einstellungen/abkuezungen/abkuerzungen}
+%\printnomenclature[3cm]
 % Abkürzungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 
 
 %%%%%%% EINLEITUNG %%%%%%%%%%%%
@@ -316,17 +321,8 @@
 \phantomsection
 \addcontentsline{toc}{section}{Anhang}
 \fancyhead[L]{Anhang} %Kopfzeile links
+\appendix
 \input{anhang/anhang}
 
-% Eidesstattliche Erklärung
-\newpage
-\phantomsection
-\addcontentsline{toc}{section}{Eidesstattliche Erklärung}
-\input{erklaerung}
-
-% leere Abschlussseite
-\newpage
-\thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
-\mbox{}
 
 \end{document}
